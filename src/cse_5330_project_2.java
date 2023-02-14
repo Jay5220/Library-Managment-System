@@ -83,8 +83,8 @@ public class cse_5330_project_2 {
         try {           
             String JDBC_Driver = "com.mysql.jdbc.Driver";
             String DB_URL = "jdbc:mysql://acadmysqldb001p/";
-            String Username = "nxk9794";
-            String Password = "Nhk@241098";        
+            String Username = "jxp0971";
+            String Password = "jxp@0971";        
             Class.forName(JDBC_Driver);            
             Connection cn = DriverManager.getConnection(DB_URL,Username,Password);        
             return cn;                 
@@ -98,10 +98,10 @@ public class cse_5330_project_2 {
         
         try {
             Statement st = cn.createStatement();        
-            String Library_DB = "USE nxk9794";        
+            String Library_DB = "USE jxp0971";        
             st.executeUpdate(Library_DB);         
             st.close();            
-            System.out.println("Database nxk9794 Selected.\n");
+            System.out.println("Database jxp0971 Selected.\n");
         }catch(Exception e) {            
             System.out.println("Create_DB Function Exception: "+e);
         }
@@ -111,7 +111,7 @@ public class cse_5330_project_2 {
         
         try {
             Statement st = cn.createStatement();        
-            st.executeQuery("USE nxk9794");              
+            st.executeQuery("USE jxp0971");              
             String Lib_member = "CREATE TABLE Lib_member (Name varchar(50), SSN varchar(10), Campus_add varchar(100), Res_add varchar(100), Phone varchar(10), Lib_card_no varchar(20), Lib_card_expire date, Is_prof varchar(1), Is_member_active varchar(1), PRIMARY KEY(SSN));";
             String Lib_staff = "CREATE TABLE Lib_staff (Staff_id varchar(10), SSN varchar(10), Type varchar(40), PRIMARY KEY(Staff_id), FOREIGN KEY f1 (SSN) REFERENCES Lib_member(SSN));";
             String Book_author = "CREATE TABLE Book_author (Author_id varchar(10), Author_name varchar(50), PRIMARY KEY (Author_id));";
@@ -143,7 +143,7 @@ public class cse_5330_project_2 {
         
         try {
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");
+            st.executeQuery("USE jxp0971");
             String sql = "INSERT INTO Lib_member values (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -324,7 +324,7 @@ public class cse_5330_project_2 {
         
         try {
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");
+            st.executeQuery("USE jxp0971");
             
             System.out.println("Which table do you want to print?");
             System.out.println("1. Lib_member");
@@ -481,7 +481,7 @@ public class cse_5330_project_2 {
         
         try {
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");
+            st.executeQuery("USE jxp0971");
             System.out.print("\nWeekly Report of Library: \n\n");
             ResultSet rs = st.executeQuery("SELECT A.ISBN,A.Title,count(B.ISBN) AS No_of_copies,week(B.Issue_date) AS Week_No,SUM(datediff(B.Notice_date,B.Issue_date)) AS No_of_Days_Loaned_Out,A.Sub_area,C.Author_name from Books as A INNER JOIN Book_issue as B ON A.ISBN=B.ISBN INNER JOIN Book_author as C ON A.Author_id=C.Author_id GROUP BY A.Sub_area,A.Author_id,B.ISBN,week(B.Issue_date)");
             System.out.print("ISBN "); gap(15,4);
@@ -571,7 +571,7 @@ public class cse_5330_project_2 {
             String is_mem_active = sc.nextLine();
             
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");
+            st.executeQuery("USE jxp0971");
             String sql = "INSERT INTO Lib_member values (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1,name);
@@ -618,7 +618,7 @@ public class cse_5330_project_2 {
             String edition = sc.nextLine();
             
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");
+            st.executeQuery("USE jxp0971");
             String sql = "INSERT INTO Books values (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1,isbn);
@@ -644,7 +644,7 @@ public class cse_5330_project_2 {
         try {
             System.out.println("\nEnter Details to Borrow a Book.");
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");
+            st.executeQuery("USE jxp0971");
             System.out.print("\nEnter Your SSN: ");
             Scanner sc = new Scanner(System.in);
             String ssn = sc.nextLine();            
@@ -708,7 +708,7 @@ public class cse_5330_project_2 {
         try {
             System.out.println("\nEnter Details to Return a Book.");
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");            
+            st.executeQuery("USE jxp0971");            
             Scanner sc = new Scanner(System.in);
             System.out.print("\nEnter Your SSN: ");
             String ssn = sc.nextLine();
@@ -755,7 +755,7 @@ public class cse_5330_project_2 {
         
         try {
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");            
+            st.executeQuery("USE jxp0971");            
             Scanner sc = new Scanner(System.in);
             System.out.print("\nEnter Your SSN: ");
             String ssn = sc.nextLine();
@@ -779,7 +779,7 @@ public class cse_5330_project_2 {
         
        try {
             Statement st = cn.createStatement();
-            st.executeQuery("USE nxk9794");           
+            st.executeQuery("USE jxp0971");           
                         
             ResultSet rs = st.executeQuery("SELECT * FROM Book_overdue");
             System.out.println("Trigger-1: Book Overdue Details:");
